@@ -1,8 +1,10 @@
 <template>
   <h1>Pokemons</h1>
   <ul>
-    <li v-for="poke of pokemons">
-      {{ poke.name }}
+    <li v-for="poke of pokemons" :key="poke.name">
+      <router-link :to="`/pokemons/${poke.name}`">{{
+        uppercasePokeName(poke.name)
+      }}</router-link>
     </li>
   </ul>
 </template>
@@ -10,6 +12,7 @@
 <script setup>
 import axios from "axios";
 import { onMounted, ref } from "vue";
+import { RouterLink } from "vue-router";
 
 const pokemons = ref([]);
 
@@ -20,6 +23,12 @@ const getData = async () => {
   } catch (error) {
     console.log(error);
   }
+};
+
+const uppercasePokeName = (pokeName) => {
+  const firstLetter = pokeName.slice(0, 1).toUpperCase();
+  const restText = pokeName.slice(1);
+  return firstLetter + restText;
 };
 
 onMounted(() => getData());

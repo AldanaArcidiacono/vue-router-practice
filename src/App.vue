@@ -1,16 +1,21 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "./components/HelloWorld.vue";
 </script>
 
 <template>
   <header>
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <div class="title">
+        <h1>Vue Practice</h1>
+        <div class="pikaAndVue">
+          <img src="../public/pika-favicon.png" alt="" width="40" />
+          <p class="love">❤</p>
+          <img src="../public/favicon.ico" alt="" width="40" />
+        </div>
+      </div>
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/pokemons">Pokemons</RouterLink>
       </nav>
     </div>
@@ -18,14 +23,26 @@ import HelloWorld from "./components/HelloWorld.vue";
 
   <!-- Here the selected component will render -->
   <RouterView />
-
-  <footer>Footer</footer>
 </template>
 
 <style scoped>
 header {
   line-height: 1.5;
   max-height: 100vh;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+}
+.pikaAndVue {
+  display: flex;
+  align-items: center;
+}
+
+.love {
+  padding-inline: 0.5rem;
+  font-size: 1.5rem;
 }
 
 .logo {

@@ -1,14 +1,14 @@
-# vue-router
+# Aldana's Practice Project
 
-This template should help get you started developing with Vue 3 in Vite.
+This is a practice of Vue3 with the CompositionAPI and the script-setup
+syntax.
 
-## Recommended IDE Setup
+Mostly, the practice is about router-vue and using axios with the [PokeApi](https://pokeapi.co/).
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Following the practices of the course [Vue js 3 [Actualizado] Desde cero + Vite + Firebase 9 + MEVN](https://www.udemy.com/share/101qKY3@EfERCrUilaaoRACp7k-t4zvhbYZPU_8BjMKCZ0p4oBn8LEFa0ucUTPQzdBChd3difQ==/) given by bluuweb.
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+This project will show Pokemons and their details. To see them, go to the
+page Pokemons :D
 
 ## Project Setup
 

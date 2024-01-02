@@ -1,5 +1,5 @@
 <template>
-  <h1>Pokemons</h1>
+  <h1>Select a Pokemon:</h1>
   <ul>
     <li v-for="poke of pokemons" :key="poke.name">
       <router-link :to="`/pokemons/${poke.name}`">{{

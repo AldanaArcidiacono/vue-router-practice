@@ -1,29 +1,30 @@
 <template>
-  <h1>Select a Pokemon:</h1>
-  <ul>
-    <li v-for="poke of pokemons" :key="poke.name">
-      <router-link :to="`/pokemons/${poke.name}`">{{
-        uppercasePokeName(poke.name)
-      }}</router-link>
-    </li>
-  </ul>
+  <h1>Pokemons!</h1>
+  <div v-if="loading">Loading Pokemons...</div>
+
+  <div class="alert alert-danger d-flex align-items-center" v-if="error">
+    <i class="fa-solid fa-circle-exclamation"></i>
+    <p class="mb-0 ms-2">{{ error }}</p>
+  </div>
+
+  <div v-if="data">
+    <h3>Select a Pokemon:</h3>
+    <ul>
+      <li v-for="poke of data.results" :key="poke.name">
+        <router-link :to="`/pokemons/${poke.name}`">{{
+          uppercasePokeName(poke.name)
+        }}</router-link>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script setup>
-import axios from "axios";
-import { onMounted, ref } from "vue";
+import { onMounted } from "vue";
 import { RouterLink } from "vue-router";
+import { useGetData } from "@/composables/getData";
 
-const pokemons = ref([]);
-
-const getData = async () => {
-  try {
-    const { data } = await axios.get("https://pokeapi.co/api/v2/pokemon");
-    pokemons.value = data.results;
-  } catch (error) {
-    console.log(error);
-  }
-};
+const { getData, data, loading, error } = useGetData();
 
 const uppercasePokeName = (pokeName) => {
   const firstLetter = pokeName.slice(0, 1).toUpperCase();
@@ -31,5 +32,5 @@ const uppercasePokeName = (pokeName) => {
   return firstLetter + restText;
 };
 
-onMounted(() => getData());
+onMounted(() => getData("https://pokeapi.co/api/v2/pokemon"));
 </script>

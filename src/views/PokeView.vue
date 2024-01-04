@@ -1,8 +1,20 @@
 <template>
   <div>
-    <h2>Poke name: {{ uppercasePokeName }}</h2>
-    <img :src="pokeImg" :alt="uppercasePokeName" width="100" />
-    <button @click="back">Back to Pokemons</button>
+    <div v-if="poke">
+      <h2>Poke name: {{ uppercasePokeName }}</h2>
+      <img :src="pokeImg" :alt="uppercasePokeName" width="100" />
+    </div>
+    <div
+      v-else
+      class="alert alert-warning d-flex align-items-center"
+      role="alert"
+    >
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      <p class="mb-0 ms-2">The requested pokemon does not exist.</p>
+    </div>
+    <button @click="back" class="btn btn-outline-primary mt-2">
+      Back to Pokemons
+    </button>
   </div>
 </template>
 
@@ -28,10 +40,10 @@ const getPokeData = async () => {
     const { data } = await axios.get(
       `https://pokeapi.co/api/v2/pokemon/${route.params.name}`
     );
-    console.log(data);
     poke.value = data;
     pokeImg.value = data.sprites.other.dream_world.front_default;
   } catch (error) {
+    poke.value = null;
     console.log(error);
   }
 };

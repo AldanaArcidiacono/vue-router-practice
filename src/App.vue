@@ -25,6 +25,9 @@ import { RouterLink, RouterView } from "vue-router";
         <router-link to="/pokemons" class="btn btn-outline-primary me-2"
           >Pokemons</router-link
         >
+        <router-link to="/counter" class="btn btn-outline-primary me-2"
+          >Counter</router-link
+        >
       </div>
     </div>
   </nav>

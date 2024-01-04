@@ -1,6 +1,7 @@
 <template>
   <div>
     <h2>Poke name: {{ uppercasePokeName }}</h2>
+    <img :src="pokeImg" :alt="uppercasePokeName" width="100" />
     <button @click="back">Back to Pokemons</button>
   </div>
 </template>
@@ -14,6 +15,7 @@ const route = useRoute();
 const router = useRouter();
 
 const poke = ref({});
+const pokeImg = ref("");
 
 const uppercasePokeName = computed(() => {
   const firstLetter = route.params.name.slice(0, 1).toUpperCase();
@@ -26,8 +28,9 @@ const getPokeData = async () => {
     const { data } = await axios.get(
       `https://pokeapi.co/api/v2/pokemon/${route.params.name}`
     );
-    // console.log(data);
+    console.log(data);
     poke.value = data;
+    pokeImg.value = data.sprites.other.dream_world.front_default;
   } catch (error) {
     console.log(error);
   }

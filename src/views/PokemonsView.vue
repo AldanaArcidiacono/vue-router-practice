@@ -9,13 +9,29 @@
 
   <div v-if="data">
     <h3>Select a Pokemon:</h3>
-    <ul>
-      <li v-for="poke of data.results" :key="poke.name">
+    <ul class="list-group">
+      <li class="list-group-item" v-for="poke of data.results" :key="poke.name">
         <router-link :to="`/pokemons/${poke.name}`">{{
           uppercasePokeName(poke.name)
         }}</router-link>
       </li>
     </ul>
+    <div class="my-3">
+      <button
+        :disabled="!data.previous"
+        class="btn btn-warning me-2"
+        @click="getData(data.previous)"
+      >
+        Previous
+      </button>
+      <button
+        :disabled="!data.next"
+        class="btn btn-danger"
+        @click="getData(data.next)"
+      >
+        Next
+      </button>
+    </div>
   </div>
 </template>
 

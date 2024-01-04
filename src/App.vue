@@ -29,7 +29,7 @@ import { RouterLink, RouterView } from "vue-router";
     </div>
   </nav>
 
-  <div class="container mt-4">
+  <div class="container mt-4 text-center">
     <RouterView />
   </div>
 </template>

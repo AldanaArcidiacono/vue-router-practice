@@ -1,6 +1,12 @@
 <template>
   <h1>Pokemons!</h1>
   <div v-if="loading">Loading Pokemons...</div>
+
+  <div class="alert alert-danger d-flex align-items-center" v-if="error">
+    <i class="fa-solid fa-circle-exclamation"></i>
+    <p class="mb-0 ms-2">{{ error }}</p>
+  </div>
+
   <div v-if="data">
     <h3>Select a Pokemon:</h3>
     <ul>
@@ -18,7 +24,7 @@ import { onMounted } from "vue";
 import { RouterLink } from "vue-router";
 import { useGetData } from "@/composables/getData";
 
-const { getData, data, loading } = useGetData();
+const { getData, data, loading, error } = useGetData();
 
 const uppercasePokeName = (pokeName) => {
   const firstLetter = pokeName.slice(0, 1).toUpperCase();

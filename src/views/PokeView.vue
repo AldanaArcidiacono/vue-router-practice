@@ -1,6 +1,12 @@
 <template>
   <div>
-    <div v-if="loading">Loading Pokemons...</div>
+    <div v-if="loading">Loading Pokemon...</div>
+
+    <div class="alert alert-danger d-flex align-items-center" v-if="error">
+      <i class="fa-solid fa-circle-exclamation"></i>
+      <p class="mb-0 ms-2">That Pokemon does not exist!</p>
+    </div>
+
     <div v-if="data">
       <h2>Poke name: {{ uppercasePokeName }}</h2>
       <img
@@ -9,14 +15,7 @@
         width="100"
       />
     </div>
-    <div
-      v-if="!loading && !data"
-      class="alert alert-warning d-flex align-items-center"
-      role="alert"
-    >
-      <i class="fa-solid fa-triangle-exclamation"></i>
-      <p class="mb-0 ms-2">The requested pokemon does not exist.</p>
-    </div>
+
     <button @click="back" class="btn btn-outline-primary mt-2">
       Back to Pokemons
     </button>
@@ -31,7 +30,7 @@ import { useGetData } from "@/composables/getData";
 const route = useRoute();
 const router = useRouter();
 
-const { getData, data, loading } = useGetData();
+const { getData, data, loading, error } = useGetData();
 
 const uppercasePokeName = computed(() => {
   const firstLetter = route.params.name.slice(0, 1).toUpperCase();

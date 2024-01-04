@@ -8,13 +8,13 @@ import { RouterLink, RouterView } from "vue-router";
       <router-link class="navbar-brand d-flex align-items-center" to="/">
         <div class="d-flex align-items-center pe-1">
           <img
-            src="../public/pika-favicon.png"
+            src="../pika-favicon.png"
             alt=""
             width="30"
             class="d-inline-block align-text-top"
           />
           <p class="m-0">❤</p>
-          <img src="../public/favicon.ico" alt="" width="30" />
+          <img src="../favicon.ico" alt="" width="30" />
         </div>
         PokeApi - Practice
       </router-link>
@@ -29,7 +29,7 @@ import { RouterLink, RouterView } from "vue-router";
     </div>
   </nav>
 
-  <div class="container">
+  <div class="container mt-4">
     <RouterView />
   </div>
 </template>

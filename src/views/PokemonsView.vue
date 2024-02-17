@@ -36,9 +36,9 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
-import { RouterLink } from "vue-router";
-import { useGetData } from "@/composables/getData";
+import { onMounted } from 'vue';
+import { RouterLink } from 'vue-router';
+import { useGetData } from '@/composables/getData';
 
 const { getData, data, loading, error } = useGetData();
 
@@ -48,5 +48,5 @@ const uppercasePokeName = (pokeName) => {
   return firstLetter + restText;
 };
 
-onMounted(() => getData("https://pokeapi.co/api/v2/pokemon"));
+onMounted(() => getData('https://pokeapi.co/api/v2/pokemon'));
 </script>

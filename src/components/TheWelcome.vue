@@ -1,8 +1,8 @@
 <script setup>
-import WelcomeItem from "./WelcomeItem.vue";
-import SupportIcon from "./icons/IconSupport.vue";
-import AIcon from "./icons/IconA.vue";
-import GameIcon from "./icons/IconGameConsole.vue";
+import WelcomeItem from './WelcomeItem.vue';
+import SupportIcon from './icons/IconSupport.vue';
+import AIcon from './icons/IconA.vue';
+import GameIcon from './icons/IconGameConsole.vue';
 </script>
 
 <template>

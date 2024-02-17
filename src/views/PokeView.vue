@@ -23,9 +23,9 @@
 </template>
 
 <script setup>
-import { onMounted, computed } from "vue";
-import { useRoute, useRouter } from "vue-router";
-import { useGetData } from "@/composables/getData";
+import { onMounted, computed } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { useGetData } from '@/composables/getData';
 
 const route = useRoute();
 const router = useRouter();
@@ -39,7 +39,7 @@ const uppercasePokeName = computed(() => {
 });
 
 const back = () => {
-  router.push("/pokemons");
+  router.push('/pokemons');
 };
 
 onMounted(() =>

@@ -16,7 +16,7 @@
         :key="poke.name"
       >
         <router-link :to="`/pokemons/${poke.name}`">{{
-          uppercasePokeName(poke.name)
+          poke.name
         }}</router-link>
       </li>
     </ul>
@@ -46,11 +46,11 @@ import { useGetData } from '@/composables/getData';
 
 const { getData, data, loading, error } = useGetData();
 
-const uppercasePokeName = (pokeName) => {
-  const firstLetter = pokeName.slice(0, 1).toUpperCase();
-  const restText = pokeName.slice(1);
-  return firstLetter + restText;
-};
-
 onMounted(() => getData('https://pokeapi.co/api/v2/pokemon'));
 </script>
+
+<style>
+.list-group-item {
+  text-transform: capitalize;
+}
+</style>

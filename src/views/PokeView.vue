@@ -13,15 +13,17 @@
           <img
             class="card-img-top"
             :src="data?.sprites?.other.dream_world.front_default"
-            :alt="uppercasePokeName"
+            :alt="data.name"
           />
           <div class="card-body">
-            <h4 class="card-title">{{ uppercasePokeName }}</h4>
+            <h4 class="card-title">{{ data.name }}</h4>
             <p class="card-text">Height: {{ data.height }}</p>
             <p class="card-text">Weight: {{ data.weight }}</p>
             <p class="card-text">Base experience: {{ data.base_experience }}</p>
             <p class="card-text">Moves: {{ data.moves.length }}</p>
-            <button class="btn btn-primary mt-3">❤</button>
+            <button @click="addFav(data)" class="btn btn-primary mt-3">
+              ❤
+            </button>
           </div>
         </div>
       </div>
@@ -34,20 +36,19 @@
 </template>
 
 <script setup>
-import { onMounted, computed } from 'vue';
+import { onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useGetData } from '@/composables/getData';
+import { useFavoritesStore } from '@/store/favorites';
 
 const route = useRoute();
 const router = useRouter();
 
 const { getData, data, loading, error } = useGetData();
 
-const uppercasePokeName = computed(() => {
-  const firstLetter = route.params.name.slice(0, 1).toUpperCase();
-  const restText = route.params.name.slice(1);
-  return firstLetter + restText;
-});
+const useFavorites = useFavoritesStore();
+
+const { addFav } = useFavorites;
 
 const back = () => {
   router.push('/pokemons');
@@ -61,5 +62,8 @@ onMounted(() =>
 <style>
 .card-img-top {
   width: 60%;
+}
+.card-title {
+  text-transform: capitalize;
 }
 </style>

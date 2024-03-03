@@ -3,7 +3,7 @@ import { RouterLink, RouterView } from 'vue-router';
 </script>
 
 <template>
-  <nav class="navbar bg-body-tertiary">
+  <nav class="navbar bg-dark-subtle">
     <div class="container-fluid">
       <router-link class="navbar-brand d-flex align-items-center" to="/">
         <div class="d-flex align-items-center pe-1">
@@ -25,6 +25,9 @@ import { RouterLink, RouterView } from 'vue-router';
         <router-link to="/pokemons" class="btn btn-outline-primary me-2"
           >Pokemons</router-link
         >
+        <router-link to="/pokes-favorites" class="btn btn-outline-primary me-2"
+          >Fav Pokes ❤</router-link
+        >
         <router-link to="/counter" class="btn btn-outline-primary me-2"
           >Counter</router-link
         >
@@ -32,7 +35,7 @@ import { RouterLink, RouterView } from 'vue-router';
     </div>
   </nav>
 
-  <div class="container mt-4 text-center">
+  <div class="container mt-4 text-center d-flex flex-column align-items-center">
     <RouterView />
   </div>
 </template>

@@ -9,8 +9,12 @@
 
   <div v-if="data">
     <h3>Select a Pokemon:</h3>
-    <ul class="list-group">
-      <li class="list-group-item" v-for="poke of data.results" :key="poke.name">
+    <ul class="list-group list-group-horizontal flex-wrap">
+      <li
+        class="list-group-item col-4"
+        v-for="poke of data.results"
+        :key="poke.name"
+      >
         <router-link :to="`/pokemons/${poke.name}`">{{
           uppercasePokeName(poke.name)
         }}</router-link>

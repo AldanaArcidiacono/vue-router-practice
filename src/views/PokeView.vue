@@ -21,8 +21,12 @@
             <p class="card-text">Weight: {{ data.weight }}</p>
             <p class="card-text">Base experience: {{ data.base_experience }}</p>
             <p class="card-text">Moves: {{ data.moves.length }}</p>
-            <button @click="addFav(data)" class="btn btn-primary mt-3">
-              ❤
+            <button
+              @click="addFav(data)"
+              :disabled="findPoke(data.name)"
+              class="btn btn-primary mt-3"
+            >
+              FAV❤
             </button>
           </div>
         </div>
@@ -48,7 +52,7 @@ const { getData, data, loading, error } = useGetData();
 
 const useFavorites = useFavoritesStore();
 
-const { addFav } = useFavorites;
+const { addFav, findPoke } = useFavorites;
 
 const back = () => {
   router.push('/pokemons');

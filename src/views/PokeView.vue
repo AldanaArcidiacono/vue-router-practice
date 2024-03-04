@@ -26,7 +26,7 @@
               :disabled="findPoke(data.name)"
               class="btn btn-primary mt-3"
             >
-              FAV❤
+              ❤
             </button>
           </div>
         </div>

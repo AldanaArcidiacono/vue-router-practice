@@ -19,9 +19,17 @@
           />
           <div class="card-body">
             <h4 class="card-title">{{ fav.name }}</h4>
-            <button @click="deleteFav(fav.id)" class="btn btn-danger mt-3">
-              💔
-            </button>
+            <div class="btn-container mt-3">
+              <button @click="deleteFav(fav.id)" class="btn btn-danger">
+                💔
+              </button>
+              <router-link
+                :to="`/pokemons/${fav.name}`"
+                class="btn btn-success ms-2"
+              >
+                More info
+              </router-link>
+            </div>
           </div>
         </div>
       </div>
@@ -32,6 +40,7 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 import { useFavoritesStore } from '@/store/favorites';
+import { RouterLink } from 'vue-router';
 
 const useFavorites = useFavoritesStore();
 
@@ -50,3 +59,4 @@ const { favorites } = storeToRefs(useFavorites);
   text-transform: capitalize;
 }
 </style>
+, RouterLink
